@@ -104,6 +104,6 @@ catalog:
       rules:
         - allow: [Template]
     - type: url
-      target: ./packages/backend/src/template.yaml
+      target: https://github.com/lucasroccoCM/backstagepoc/blob/main/packages/backend/src/template.yaml
       rules:
         - allow: [Template]

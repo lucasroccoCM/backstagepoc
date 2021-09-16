@@ -25,13 +25,13 @@ spec:
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
-    - id: fetch-base
-      name: Fetch Base
-      action: fetch:template
-      input:
-        url: ./template
-        values:
-          message: '{{ parameters.message }}'
+    # - id: fetch-base
+    #   name: Fetch Base
+    #   action: fetch:template
+    #   input:
+    #     url: ./template
+    #     values:
+    #       message: '{{ parameters.message }}'
 
     - id: status-message
       name: Send Status Message
