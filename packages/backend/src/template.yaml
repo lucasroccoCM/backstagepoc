@@ -1,0 +1,40 @@
+apiVersion: backstage.io/v1beta2
+kind: Template
+# some metadata about the template itself
+metadata:
+  name: v1beta2-demo
+  title: Status Report Test Action template
+  description: scaffolder v1beta2 template demo
+spec:
+  owner: backstage/techdocs-core
+  type: service
+
+  # these are the steps which are rendered in the frontend with the form input
+  parameters:
+    - title: Fill in some steps
+      required:
+        - message
+      properties:
+        message:
+          title: Message
+          type: string
+          description: Message to send to Status Report Backend API
+          ui:autofocus: true
+          ui:options:
+            rows: 5    
+
+  # here's the steps that are executed in series in the scaffolder backend
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./template
+        values:
+          message: '{{ parameters.message }}'
+
+    - id: status-message
+      name: Send Status Message
+      action: mycompany:send-status-message
+      input:
+        message: '{{ parameters.message }}'
