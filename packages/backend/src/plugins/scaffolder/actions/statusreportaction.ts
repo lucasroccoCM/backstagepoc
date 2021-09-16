@@ -9,7 +9,7 @@ export const SendStatusMessageAction = () => {
                 required: ['message'],
                 type: 'object',
                 properties: {
-                    contents: {
+                    message: {
                         type: 'string',
                         title: 'Message',
                         description: 'The message to send to backend API',
@@ -18,6 +18,7 @@ export const SendStatusMessageAction = () => {
             },
         },
         async handler(ctx) {
+            ctx.logStream.write(ctx.input.message);
             await SendStatusMessage(`${ctx.input.message}`)
         },
     });
